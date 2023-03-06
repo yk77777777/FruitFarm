@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace kinjo {
 
-    public class FruitRandom : MonoBehaviour
+    public class FruitGenerator : MonoBehaviour
     {
         public GameObject prefab;
         private float speed;
@@ -17,14 +17,16 @@ namespace kinjo {
         // Update is called once per frame
         IEnumerator RandomFruit(){
             while(true){
-                speed = Random.Range (1, 30);
+                speed = Random.Range (0.1f, 30f);
                 GameObject fruit = Instantiate(
                     prefab,
-                    new Vector3(Random.Range(-12.0f,12.0f),Random.Range(8.0f,12.0f),Random.Range(-3.0f,3.0f)),
+                    transform.position +
+                    new Vector3(Random.Range(-3.0f,12.0f),Random.Range(8.0f,12.0f),Random.Range(-3.0f,3.0f)),
                     Quaternion.identity
                 );
                 fruit.GetComponent<Rigidbody>().velocity = transform.forward * speed;
-                yield return new WaitForSeconds(0.01f);
+                // Debug.Break();
+                yield return new WaitForSeconds(0.05f);
             }
         }
         
