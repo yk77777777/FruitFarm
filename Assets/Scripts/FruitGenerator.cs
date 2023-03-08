@@ -6,8 +6,11 @@ namespace kinjo {
 
     public class FruitGenerator : MonoBehaviour
     {
-        public GameObject prefab;
+        public GameController gc;
+        public GameObject Fruitprefab;
         private float speed;
+        private float shotForce;
+        private float shotTorque;
         // Start is called before the first frame update
         void Start()
         {
@@ -18,15 +21,23 @@ namespace kinjo {
         IEnumerator RandomFruit(){
             while(true){
                 speed = Random.Range (0.1f, 30f);
+                shotForce = Random.Range (100f, 500f);
+                shotTorque = Random.Range (0f, 360f);
                 GameObject fruit = Instantiate(
-                    prefab,
+                    Fruitprefab,
                     transform.position +
-                    new Vector3(Random.Range(-3.0f,12.0f),Random.Range(8.0f,12.0f),Random.Range(-3.0f,3.0f)),
+                    new Vector3(Random.Range(-12.0f,12.0f),Random.Range(5.0f,20.0f),Random.Range(-12.0f,12.0f)),
                     Quaternion.identity
                 );
-                fruit.GetComponent<Rigidbody>().velocity = transform.forward * speed;
+                //fruit.GetComponent<Rigidbody>().velocity = transform.forward * speed;
                 // Debug.Break();
+                Rigidbody fruitRigidbody = fruit.GetComponent<Rigidbody>();
+                fruitRigidbody.AddForce(transform.forward * shotForce);
+                fruitRigidbody.AddTorque(new Vector3(0, shotTorque, 0));
                 yield return new WaitForSeconds(0.05f);
+
+                //GameControllerをセットする
+                fruit.GetComponent<FruitController>().SetGameController(gc);
             }
         }
         

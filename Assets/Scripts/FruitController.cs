@@ -10,12 +10,13 @@ namespace kinjo {
 
         void OnCollisionEnter(Collision coll){
             if (coll.gameObject.tag == "Animal") {
-                gc.SetScore (gc.GetScore () + 1);
-                Destroy (gameObject, 0.1f);
+                gc.SetScore (gc.GetScore() + 1);
+                Destroy (this.gameObject, 0.1f);
             }
-            if (coll.gameObject.tag == "Ground") {
-                gc.SetMsg("GameOver");
-            }
+            Destroy(this.gameObject, 1.0f);
+            // if (coll.gameObject.tag == "Ground") {
+            //     gc.SetMsg("GameOver");
+            // }
         }
         public void SetGameController(GameController gc){
             this.gc = gc;
