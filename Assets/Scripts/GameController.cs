@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace kinjo {
 
@@ -10,12 +12,14 @@ namespace kinjo {
     public class GameController : MonoBehaviour
     {
         public string _dataPath;
-        public float time;
         private string name;
         private int score = 0;
-        public GUIStyle scoreStyle;
-        public GUIStyle timeStyle;
-        public GUIStyle msgStyle;
+        //カウントダウン
+    	public float countdown;
+    	//時間を表示するText型の変数
+    	public Text TimeText;
+        public Text ScoreText;
+        public Text MsgText;
 
         private string msg = "";
 
@@ -53,17 +57,33 @@ namespace kinjo {
         // Update is called once per frame
         void Update()
         {
+            //時間をカウントダウンする
+            countdown -= Time.deltaTime;
+
+            //時間を表示する
+            TimeText.text = countdown.ToString("f0") + "秒";
+
+            //countdownが0以下になったとき
+            if (countdown <= 0)
+            {
+                //これ以降のUpdateはやめる
+                enabled = false;
+                SetMsg("GameOver");
+                MsgText.text = GetMsg();
+            }
             if (msg == "GameOver") {
                 //動きを止める
                 Time.timeScale = 0f;
             }
+            //2秒後にReturnToTitleを呼び出す
+            Invoke("ReturnToTitle", 2.0f);
         }
 
-        void OnGUI(){
-            GUI.Label (new Rect (5, 5, 10, 10), score.ToString(), scoreStyle);
-            GUI.Label (new Rect (5, 5, 10, 10), time.ToString(), timeStyle);
-            GUI.Label (new Rect (Screen.width/2-150, Screen.height/2-25, 300, 50), msg, msgStyle);
-        }
+        // void OnGUI(){
+        //     GUI.Label (new Rect (5, 5, 10, 10), score.ToString(), scoreStyle);
+        //     //GUI.Label (new Rect (5, 5, 10, 10), time.ToString(), timeStyle);
+        //     GUI.Label (new Rect (Screen.width/2-150, Screen.height/2-25, 300, 50), msg, msgStyle);
+        // }
         public int GetScore(){
             return score;
         }
@@ -75,6 +95,10 @@ namespace kinjo {
         }
         public void SetMsg(string msg){
             this.msg = msg;
+        }
+        void ReturnToTitle()
+        {
+            SceneManager.LoadScene("Title");
         }
     }
 }
