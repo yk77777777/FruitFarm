@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3246571028797723431}
   - component: {fileID: -247800578618539800}
   m_Layer: 8
-  m_Name: apple
+  m_Name: appleGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3991cc4f6da65944bbf74decaf5aa4ee, type: 2}
+  - {fileID: 2100000, guid: 885b9e788603e42d0a234de09395e947, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b79ba16d7599f4e8d6d4ed63788de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: 1
+  point: 5
 --- !u!54 &3246571028797723431
 Rigidbody:
   m_ObjectHideFlags: 0
