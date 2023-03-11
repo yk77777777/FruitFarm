@@ -17,7 +17,6 @@ namespace kinjo {
     public class GameController : MonoBehaviour
     {
         private string dataPath;
-        private string name;
         private DataRW rw = new DataRW();
         public int sceneId;
         private LoadData loadData;
