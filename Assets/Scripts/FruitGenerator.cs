@@ -9,6 +9,9 @@ namespace kinjo {
         public GameController gc;
 
         public GameObject[] Fruitprefab = new GameObject[3];
+        public int rangeNum1;
+        public int rangeNum2;
+        //public int num3;
 
         private int idx;
         private int rdmNo;
@@ -27,10 +30,10 @@ namespace kinjo {
                 speed = Random.Range (0.1f, 30f);
                 shotForce = Random.Range (100f, 500f);
                 shotTorque = Random.Range (0f, 360f);
-                rdmNo = Random.Range (1, 11);
-                if(rdmNo == 10){
+                rdmNo = Random.Range (1, 101);
+                if(rdmNo <= rangeNum1){
                     idx = 2;
-                }else if(rdmNo >= 8){
+                }else if(rdmNo <= rangeNum2){
                     idx = 1;
                 }else{
                     idx = 0;

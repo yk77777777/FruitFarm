@@ -15,18 +15,22 @@ namespace kinjo {
         public float speedZ;
         //public float speedX;
         public float speedJump;
+        public float nowPosi;
 
         void Start() {
             //必要なコンポーネントを自動取得
             controller = GetComponent<CharacterController>();
             animator = GetComponent<Animator>();
+            nowPosi = this.transform.position.y;
         }
 
 //歩くときに縦軸をあげる
         void Update() {
+            moveDirection.y = moveDirection.y + Mathf.PingPong(Time.time, 1.0f); // Mathf.PingPong(Time.time, 1.0f);
             if(controller.isGrounded){
                 if(Input.GetAxis("Vertical") > 0.0f){
                     moveDirection.z = Input.GetAxis("Vertical") * speedZ;
+                    
                 }else{
                     moveDirection.z = 0;
                 }

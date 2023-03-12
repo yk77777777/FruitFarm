@@ -20,7 +20,7 @@ namespace kinjo{
         // public Text OrangeScore;
         //public string[] highScoreText = new string[4];
         public Text[] highScoreText = new Text[4];
-        AudioSource pushIcon;
+        AudioSource IconButton;
 
         //private string apple= "";
 
@@ -36,7 +36,7 @@ namespace kinjo{
             loadData = rw.LoadSceneData(dataPath);
             //Debug.Log(loadData.seasonsData[0].id);    // 1
 
-            pushIcon = GetComponent<AudioSource>();
+            IconButton = GetComponent<AudioSource>();
 
             for(int i = 0; i < loadData.seasonsData.Length; i++){
                 highScoreText[i].text = "high score : " + loadData.seasonsData[i].highScore + "pt";
@@ -46,7 +46,7 @@ namespace kinjo{
         // Start is called before the first frame update
         public void OnStartButtonClicked(string scene)
         {
-            pushIcon.Play();
+            IconButton.Play();
             SceneManager.LoadScene(scene);
         }
     }

@@ -34,6 +34,7 @@ namespace kinjo {
 
         private string msg = "";
         private string hsMsg = "";
+        AudioSource MenuButton;
 
     private void Awake()
     {
@@ -47,6 +48,8 @@ namespace kinjo {
             loadData = rw.LoadSceneData(dataPath);
             //Debug.Log(loadData.seasonsData[0].id);    // 1
 
+            MenuButton = GetComponent<AudioSource>();
+
             //scene判定
             for(int i = 0; i < loadData.seasonsData.Length; i++){
                 if(loadData.seasonsData[i].id == sceneId)
@@ -59,8 +62,6 @@ namespace kinjo {
 
         }
 
-
-
         // Update is called once per frame
         void Update()
         {
@@ -68,10 +69,10 @@ namespace kinjo {
             countdown -= Time.deltaTime;
 
             //時間を表示する
-            TimeText.text = countdown.ToString("f0") + "秒";
+            TimeText.text = countdown.ToString("f0") + " s";
 
             //スコアを表示する
-            ScoreText.text = "Score : " + GetScore() + "pt";
+            ScoreText.text = "score : " + GetScore() + "pt";
 
             //countdownが0以下になったとき
             if (countdown <= 0)
@@ -91,6 +92,12 @@ namespace kinjo {
                 //2秒後にReturnToTitleを呼び出す
                 Invoke("ReturnToTitle", 2.0f);
             }
+        }
+
+        public void OnMenuButtonClicked()
+        {
+            MenuButton.Play();
+            ReturnToTitle();
         }
 
         public void SetScore(int score){
