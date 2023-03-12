@@ -34,7 +34,12 @@ namespace kinjo {
 
         private string msg = "";
         private string hsMsg = "";
-        AudioSource MenuButton;
+        //MenuButton;
+        [SerializeField] private AudioSource as1;//AudioSource型の変数a1を宣言 使用するAudioSourceコンポーネントをアタッチ必要
+        //TimeUp
+        [SerializeField] private AudioSource as2;//AudioSource型の変数a2を宣言 使用するAudioSourceコンポーネントをアタッチ必要
+        [SerializeField] private AudioClip ac1;//AudioClip型の変数b1を宣言 使用するAudioClipをアタッチ必要
+        [SerializeField] private AudioClip ac2;//AudioClip型の変数b2を宣言 使用するAudioClipをアタッチ必要 
 
     private void Awake()
     {
@@ -48,7 +53,8 @@ namespace kinjo {
             loadData = rw.LoadSceneData(dataPath);
             //Debug.Log(loadData.seasonsData[0].id);    // 1
 
-            MenuButton = GetComponent<AudioSource>();
+            as1 = GetComponent<AudioSource>();
+            // as2 = GetComponent<AudioSource>();
 
             //scene判定
             for(int i = 0; i < loadData.seasonsData.Length; i++){
@@ -81,6 +87,8 @@ namespace kinjo {
                 enabled = false;
                 SetMsg("TimeUp");
                 MsgText.text = GetMsg();
+                as2.Play();
+
                 //ハイスコアを更新
                 if(GetScore() > sceneData.highScore)
                 {
@@ -96,7 +104,7 @@ namespace kinjo {
 
         public void OnMenuButtonClicked()
         {
-            MenuButton.Play();
+            as1.PlayOneShot(ac1);
             ReturnToTitle();
         }
 
