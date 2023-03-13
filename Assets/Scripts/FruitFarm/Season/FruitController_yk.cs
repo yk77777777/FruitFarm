@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace kinjo {
 
-    public class FruitController : MonoBehaviour
+    public class FruitController_yk : MonoBehaviour
     {
-        private GameController gc;
+        private GameController_yk gc;
         public int point;
         AudioSource pickSound;
 
@@ -28,7 +28,7 @@ namespace kinjo {
             //     gc.SetMsg("GameOver");
             // }
         }
-        public void SetGameController(GameController gc){
+        public void SetGameController(GameController_yk gc){
             this.gc = gc;
         }
     }

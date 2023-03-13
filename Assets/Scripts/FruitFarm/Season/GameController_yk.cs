@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -9,18 +8,19 @@ namespace kinjo {
 
     //定義したクラスをJSONデータに変換できるようにする
     [System.Serializable]
-    public class LoadData
+    public class LoadData_yk
     {
-        public SeasonsData[] seasonsData;
+        public SeasonsData_yk[] seasonsData;
     }
 
-    public class GameController : MonoBehaviour
+    public class GameController_yk : MonoBehaviour
     {
         private string dataPath;
-        private DataRW rw = new DataRW();
+        public string JsonFileName;
+        private DataRW_yk rw = new DataRW_yk();
         public int sceneId;
-        private LoadData loadData;
-        private SeasonsData sceneData = new SeasonsData();
+        private LoadData_yk loadData;
+        private SeasonsData_yk sceneData = new SeasonsData_yk();
         private int idx;
 
         private int score = 0;
@@ -44,7 +44,7 @@ namespace kinjo {
     private void Awake()
     {
         //初めに保存先を計算する　Application.dataPathで今開いているUnityプロジェクトのAssetsフォルダ直下を指定して、後ろに保存名を書く
-        dataPath = Application.dataPath + "/Resources/json/data.json";
+        dataPath = Application.dataPath + "/Resources/json/" + JsonFileName;
         //Debug.Log(dataPath);
     }
 
@@ -97,15 +97,15 @@ namespace kinjo {
                     loadData.seasonsData[idx].highScore = GetScore();
                     rw.SaveSceneData(loadData, dataPath);
                 }
-                //2秒後にReturnToTitleを呼び出す
-                Invoke("ReturnToTitle", 2.0f);
+                //2秒後にReturnToMenuを呼び出す
+                Invoke("ReturnToMenu", 2.0f);
             }
         }
 
         public void OnMenuButtonClicked()
         {
             as1.PlayOneShot(ac1);
-            ReturnToTitle();
+            ReturnToMenu();
         }
 
         public void SetScore(int score){
@@ -126,10 +126,14 @@ namespace kinjo {
         public string GetHSMsg(){
             return hsMsg;
         }
-
-        void ReturnToTitle()
+        void ReturnToMenu()
         {
-            SceneManager.LoadScene("Title");
+            SceneManager.LoadScene("FF_Menu");
         }
+
+        // void ReturnToTitle()
+        // {
+        //     SceneManager.LoadScene("title");
+        // }
     }
 }

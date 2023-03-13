@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace kinjo {
 
-		public class CameraController : MonoBehaviour {
+		public class CameraController_yk : MonoBehaviour {
 			public Transform player;
 
 			void LateUpdate () {

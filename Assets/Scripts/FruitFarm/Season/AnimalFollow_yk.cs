@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace kinjo{
 
-    public class SimpleFollow : MonoBehaviour
+    public class AnimalFollow_yk : MonoBehaviour
     {
 
         Vector3 diff;

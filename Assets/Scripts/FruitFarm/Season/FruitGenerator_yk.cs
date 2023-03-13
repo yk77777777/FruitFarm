@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace kinjo {
 
-    public class FruitGenerator : MonoBehaviour
+    public class FruitGenerator_yk : MonoBehaviour
     {
-        public GameController gc;
+        public GameController_yk gc;
 
         public GameObject[] Fruitprefab = new GameObject[3];
         public int rangeNum1;
@@ -48,7 +48,7 @@ namespace kinjo {
                 //Debug.Break();
 
                 //GameControllerをセットする
-                fruit.GetComponent<FruitController>().SetGameController(gc);
+                fruit.GetComponent<FruitController_yk>().SetGameController(gc);
 
                 Rigidbody fruitRigidbody = fruit.GetComponent<Rigidbody>();
                 fruitRigidbody.AddForce(transform.forward * shotForce);

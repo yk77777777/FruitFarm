@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace kinjo {
 
-    public class AnimalController : MonoBehaviour
+    public class AnimalController_yk : MonoBehaviour
     {
         CharacterController controller;
         Animator animator;
@@ -15,19 +15,23 @@ namespace kinjo {
         public float speedZ;
         //public float speedX;
         public float speedJump;
-        public float nowPosi;
+        private float duration = 0;
 
         void Start() {
             //必要なコンポーネントを自動取得
             controller = GetComponent<CharacterController>();
             animator = GetComponent<Animator>();
-            nowPosi = this.transform.position.y;
         }
 
 //歩くときに縦軸をあげる
         void Update() {
-            moveDirection.y = moveDirection.y + Mathf.PingPong(Time.time, 1.0f); // Mathf.PingPong(Time.time, 1.0f);
+            //moveDirection.y = moveDirection.y + 10 * Mathf.Sin(Time.time * 2f); // Mathf.PingPong(Time.time, 1.0f);
             if(controller.isGrounded){
+                duration += Time.deltaTime;
+                if(duration >= 1.0f){
+                    moveDirection.y = 5.0f;
+                    duration = 0;
+                }
                 if(Input.GetAxis("Vertical") > 0.0f){
                     moveDirection.z = Input.GetAxis("Vertical") * speedZ;
                     
