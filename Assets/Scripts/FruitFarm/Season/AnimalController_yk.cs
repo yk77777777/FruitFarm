@@ -12,6 +12,7 @@ namespace kinjo {
         Vector3 moveDirection = Vector3.zero;
 
         public float gravity;
+        public float speedX;
         public float speedZ;
         //public float speedX;
         public float speedJump;
@@ -34,6 +35,9 @@ namespace kinjo {
                     moveDirection.y = 0.4f;
                     duration = 0;
                 }
+
+                moveDirection.z = transform.position.x * speedX;;
+
                 if(Input.GetAxis("Vertical") > 0.0f){
                     moveDirection.z = Input.GetAxis("Vertical") * speedZ;
                     
