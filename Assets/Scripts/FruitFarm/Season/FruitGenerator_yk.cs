@@ -53,6 +53,7 @@ namespace kinjo {
                 Rigidbody fruitRigidbody = fruit.GetComponent<Rigidbody>();
                 fruitRigidbody.AddForce(transform.forward * shotForce);
                 fruitRigidbody.AddTorque(new Vector3(0, shotTorque, 0));
+                // Debug.Break();
 
 
 

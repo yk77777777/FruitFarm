@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3246571028797723431}
   - component: {fileID: -247800578618539800}
   - component: {fileID: 8198052590129797652}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: apple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_RootOrder
