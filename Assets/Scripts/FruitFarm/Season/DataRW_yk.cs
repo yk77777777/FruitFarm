@@ -6,10 +6,11 @@ using System.IO;
 namespace kinjo{
 
     public class DataRW_yk //: MonoBehaviour
-    {        public LoadData_yk LoadSceneData(string dataPath)
+    {        public LoadData_yk LoadSceneData(string _dataPath)
         {
-            StreamReader reader = new StreamReader(dataPath); //受け取ったパスのファイルを読み込む
+            StreamReader reader = new StreamReader(_dataPath); //受け取ったパスのファイルを読み込む
             string datastr = reader.ReadToEnd();//ファイルの中身をすべて読み込む
+            //Debug.Log(datastr);
             reader.Close();//ファイルを閉じる
 
             // 読み取った文字列をオブジェクト型に変換

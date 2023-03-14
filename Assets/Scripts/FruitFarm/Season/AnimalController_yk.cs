@@ -27,9 +27,11 @@ namespace kinjo {
         void Update() {
             //moveDirection.y = moveDirection.y + 10 * Mathf.Sin(Time.time * 2f); // Mathf.PingPong(Time.time, 1.0f);
             if(controller.isGrounded){
+
+                //つねに上下移動（呼吸ぽく）
                 duration += Time.deltaTime;
                 if(duration >= 1.0f){
-                    moveDirection.y = 5.0f;
+                    moveDirection.y = 0.4f;
                     duration = 0;
                 }
                 if(Input.GetAxis("Vertical") > 0.0f){

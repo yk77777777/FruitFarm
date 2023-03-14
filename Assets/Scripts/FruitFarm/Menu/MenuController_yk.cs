@@ -9,7 +9,7 @@ namespace kinjo{
     public class MenuController_yk : MonoBehaviour
     {
 
-        private string dataPath;
+        private string _dataPath;
         private DataRW_yk rw = new DataRW_yk();
         private LoadData_yk loadData = new LoadData_yk();
         public Text[] highScoreText = new Text[4];
@@ -29,13 +29,13 @@ namespace kinjo{
         private void Awake()
         {
             //初めに保存先を計算する　Application.dataPathで今開いているUnityプロジェクトのAssetsフォルダ直下を指定して、後ろに保存名を書く
-            dataPath = Application.dataPath + "/Resources/json/" + JsonFileName;
+            _dataPath = Application.dataPath + "/Resources/json/" + JsonFileName; //seasonsData_yk.json";
             //Debug.Log(dataPath);
         }
 
         void Start()
         {
-            loadData = rw.LoadSceneData(dataPath);
+            loadData = rw.LoadSceneData(_dataPath);
             //Debug.Log(loadData.seasonsData[0].id);    // 1
 
             IconButton = GetComponent<AudioSource>();

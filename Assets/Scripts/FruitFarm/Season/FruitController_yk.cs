@@ -20,8 +20,15 @@ namespace kinjo {
                 //サウンド再生
                 pickSound.Play();
                 //ポイント獲得
-                gc.SetScore (gc.GetScore() + point);
-                Destroy (this.gameObject, 0.1f);
+                if(gc.GetScore() + point < 0)
+                {
+                    gc.SetScore (0);
+                }
+                else
+                {
+                    gc.SetScore (gc.GetScore() + point);
+                    Destroy (this.gameObject, 0.1f);
+                }
             }
             Destroy(this.gameObject, 1.0f);
             // if (coll.gameObject.tag == "Ground") {
