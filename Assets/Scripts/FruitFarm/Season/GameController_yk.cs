@@ -15,7 +15,7 @@ namespace kinjo {
 
     public class GameController_yk : MonoBehaviour
     {
-        private string dataPath;
+        private string _dataPath;
         public string JsonFileName;
         private DataRW_yk rw = new DataRW_yk();
         public int sceneId;
@@ -24,10 +24,12 @@ namespace kinjo {
         private int idx;
 
         private int score = 0;
+        private int highScore = 0;
         //カウントダウン
     	public float countdown;
     	//時間を表示するText型の変数
     	public Text TimeText;
+        public Text HighScoreText;
         public Text ScoreText;
         public Text MsgText;
         public Text HSMsgText;
@@ -41,16 +43,29 @@ namespace kinjo {
         [SerializeField] private AudioClip ac1;//AudioClip型の変数b1を宣言 使用するAudioClipをアタッチ必要
         [SerializeField] private AudioClip ac2;//AudioClip型の変数b2を宣言 使用するAudioClipをアタッチ必要 
 
-    private void Awake()
-    {
-        //初めに保存先を計算する　Application.dataPathで今開いているUnityプロジェクトのAssetsフォルダ直下を指定して、後ろに保存名を書く
-        dataPath = Application.dataPath + "/Resources/json/" + JsonFileName;
-        //Debug.Log(dataPath);
-    }
+    // private void Awake()
+    // {
+    //     //初めに保存先を計算する　Application.dataPathで今開いているUnityプロジェクトのAssetsフォルダ直下を指定して、後ろに保存名を書く
+    //     _dataPath = Application.dataPath + "/Resources/json/" + JsonFileName;
+    //     //Debug.Log(_dataPath);
+
+    //     for(int i = 0; i < loadData.seasonsData.Length; i++)
+    //     {
+    //         if(sceneId == loadData.seasonsData[i].sceneId)
+    //         {
+    //             highScoreText[i].text = "high score : " + loadData.seasonsData[i].highScore + "pt";
+    //             break;
+    //         }
+    //     }
+    // }
 
         void Start()
         {
-            loadData = rw.LoadSceneData(dataPath);
+            //初めに保存先を計算する　Application.dataPathで今開いているUnityプロジェクトのAssetsフォルダ直下を指定して、後ろに保存名を書く
+            _dataPath = Application.dataPath + "/Resources/json/" + JsonFileName;
+            //Debug.Log(_dataPath);
+
+            loadData = rw.LoadSceneData(_dataPath);
             //Debug.Log(loadData.seasonsData[0].id);    // 1
 
             as1 = GetComponent<AudioSource>();
@@ -62,10 +77,11 @@ namespace kinjo {
                 {
                     sceneData = loadData.seasonsData[i];
                     idx = i;
+                    SetHighScore(loadData.seasonsData[i].highScore);
+                    HighScoreText.text = "high score : " + GetHighScore() + "pt";
                     break;
                 }
             }
-
         }
 
         // Update is called once per frame
@@ -95,7 +111,7 @@ namespace kinjo {
                     SetHSMsg("High Score!");
                     HSMsgText.text = GetHSMsg();
                     loadData.seasonsData[idx].highScore = GetScore();
-                    rw.SaveSceneData(loadData, dataPath);
+                    rw.SaveSceneData(loadData, _dataPath);
                 }
                 //2秒後にReturnToMenuを呼び出す
                 Invoke("ReturnToMenu", 2.0f);
@@ -113,6 +129,12 @@ namespace kinjo {
         }
         public int GetScore(){
             return score;
+        }
+        public void SetHighScore(int highScore){
+            this.highScore = highScore;
+        }
+        public int GetHighScore(){
+            return highScore;
         }
         public void SetMsg(string msg){
             this.msg = msg;
