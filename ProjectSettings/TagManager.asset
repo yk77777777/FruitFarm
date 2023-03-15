@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Animal
   - Ground
+  - Fruit
+  - FruitBlack
+  - FruitGold
   layers:
   - Default
   - TransparentFX
