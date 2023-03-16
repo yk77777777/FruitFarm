@@ -8,17 +8,9 @@ namespace kinjo {
     {
         private GameController_yk gc;
         public int point;
-        //AudioSource pickSound;
-
-        void Start()
-        {
-            //pickSound = GetComponent<AudioSource>();
-        }
 
         void OnCollisionEnter(Collision coll){
             if (coll.gameObject.tag == "Animal") {
-                //サウンド再生
-                //pickSound.Play();
                 //ポイント獲得
                 if(gc.GetScore() + point < 0)
                 {

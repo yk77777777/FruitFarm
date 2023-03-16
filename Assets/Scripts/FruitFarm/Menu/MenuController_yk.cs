@@ -29,7 +29,7 @@ namespace kinjo{
         private void Awake()
         {
             //初めに保存先を計算する　Application.dataPathで今開いているUnityプロジェクトのAssetsフォルダ直下を指定して、後ろに保存名を書く
-            _dataPath = Application.dataPath + "/Resources/json/" + JsonFileName; //seasonsData_yk.json";
+            _dataPath = Application.dataPath + "/Resources/FruitFarm/json/" + JsonFileName; //seasonsData_yk.json";
             //Debug.Log(dataPath);
         }
 

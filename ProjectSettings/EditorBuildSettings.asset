@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/FF_Menu.unity
+    path: Assets/Scenes/FruitFarm/FF_Menu.unity
     guid: 55a87ee01cb444972b2864a0e644025b
   - enabled: 1
-    path: Assets/Scenes/FF_Autumn.unity
+    path: Assets/Scenes/FruitFarm/FF_Autumn.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
