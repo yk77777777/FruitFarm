@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/FruitFarm/FF_Menu.unity
+    path: Assets/FruitFarm/Scenes/FF_Menu.unity
     guid: 55a87ee01cb444972b2864a0e644025b
   - enabled: 1
-    path: Assets/Scenes/FruitFarm/FF_Autumn.unity
+    path: Assets/FruitFarm/Scenes/FF_Spring.unity
+    guid: 84203ebe4d47f472ca9b79a2865fa149
+  - enabled: 1
+    path: Assets/FruitFarm/Scenes/FF_Summer.unity
+    guid: ac2dc71d1317cd640ad095aef346fbca
+  - enabled: 1
+    path: Assets/FruitFarm/Scenes/FF_Autumn.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/FruitFarm/Scenes/FF_Winter.unity
+    guid: 699ac6b20164c40ad9d3775a72b23137
   m_configObjects: {}
